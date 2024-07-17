@@ -27,19 +27,11 @@ android {
         }
     }
 
-    signingConfigs {
-        create("release") {
-            storeFile = file(getKeystoreProp()["FILE_PATH"]!!)
-            storePassword = getKeystoreProp()["PASSWORD"]?.toString()
-            keyAlias = getKeystoreProp()["KEY_ALIAS"]?.toString()
-            keyPassword = getKeystoreProp()["KEY_PASSWORD"]?.toString()
-        }
-    }
+    
 
     buildTypes {
 
         release {
-            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             isDebuggable = false
             resValue(type = "string", name = "app_name", "Music Player")
@@ -177,5 +169,4 @@ fun getRootProp(propName: String): Properties {
     return getProp(propFile)
 }
 
-fun getLocalProp(): Properties = getRootProp("local.properties")
-fun getKeystoreProp(): Properties = getRootProp("keystore.properties")
+fun getLocalProp(): Properties = getRootProp("local.properties
